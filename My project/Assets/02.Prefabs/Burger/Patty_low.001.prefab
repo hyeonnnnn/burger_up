@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1133069437016827673}
   - component: {fileID: 4204833938046581954}
   - component: {fileID: 2956036394434493729}
-  - component: {fileID: -3593019700065490218}
+  - component: {fileID: -9121208898879254315}
+  - component: {fileID: 2078477268246702346}
   m_Layer: 0
   m_Name: Patty_low.001
   m_TagString: Untagged
@@ -109,7 +110,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.7670666, y: 0.31081903, z: 1.7670666}
   m_Center: {x: 0, y: 0.2069053, z: 0}
---- !u!54 &-3593019700065490218
+--- !u!54 &-9121208898879254315
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,3 +137,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2078477268246702346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690971084123584142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3565e4ed3098ec54da46903a21e8460f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
+  _distance: 2

@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7372721506093508320}
   - component: {fileID: 1575774427322928694}
   - component: {fileID: 2483854085456392018}
-  - component: {fileID: 3881833451332182536}
+  - component: {fileID: 6477978953091763843}
+  - component: {fileID: 6682465430665510928}
   m_Layer: 0
   m_Name: topbun_low
   m_TagString: Untagged
@@ -109,7 +110,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8025287, y: 0.70282036, z: 1.8027351}
   m_Center: {x: 0.00007253885, y: 0.3815854, z: -0.0001757443}
---- !u!54 &3881833451332182536
+--- !u!54 &6477978953091763843
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,3 +137,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6682465430665510928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7526754722409059857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3565e4ed3098ec54da46903a21e8460f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
+  _distance: 2

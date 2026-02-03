@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 350714203031283338}
   - component: {fileID: 4339902817208409419}
   - component: {fileID: 4653997418659704639}
-  - component: {fileID: -3977726627926882542}
+  - component: {fileID: 7975243279224723040}
+  - component: {fileID: -4003273038194608441}
   m_Layer: 0
   m_Name: Cheese_low
   m_TagString: Untagged
@@ -109,7 +110,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9975666, y: 0.30092478, z: 1.9981146}
   m_Center: {x: -0.000047028065, y: -0.13628271, z: -0.00026136637}
---- !u!54 &-3977726627926882542
+--- !u!54 &7975243279224723040
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,3 +137,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4003273038194608441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8156691359678277467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3565e4ed3098ec54da46903a21e8460f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
+  _distance: 2

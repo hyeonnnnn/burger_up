@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5733634977593376494}
   - component: {fileID: 6999569903516432468}
   - component: {fileID: 8405516754707327106}
-  - component: {fileID: 5597759714269781883}
+  - component: {fileID: -5514702957866443198}
+  - component: {fileID: -4085637291703900109}
   m_Layer: 0
   m_Name: Tomato_low
   m_TagString: Untagged
@@ -109,7 +110,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.801026, y: 0.1710111, z: 1.8010261}
   m_Center: {x: 0, y: 0.08550555, z: 0}
---- !u!54 &5597759714269781883
+--- !u!54 &-5514702957866443198
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,3 +137,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4085637291703900109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276823636099120603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3565e4ed3098ec54da46903a21e8460f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
+  _distance: 2
