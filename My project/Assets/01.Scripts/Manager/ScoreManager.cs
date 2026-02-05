@@ -22,6 +22,21 @@ public class ScoreManager : MonoBehaviour
         Instance = this;
     }
 
+    private void OnEnable()
+    {
+        IngredientsSpawner.OnIngredientDropped += HandleIngredientDropped;
+    }
+
+    private void OnDisable()
+    {
+        IngredientsSpawner.OnIngredientDropped -= HandleIngredientDropped;
+    }
+
+    private void HandleIngredientDropped(DropEventArgs args)
+    {
+        AddScore(args.Score);
+    }
+
     public void AddScore(int amount)
     {
         _score += amount;

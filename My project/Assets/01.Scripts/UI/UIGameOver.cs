@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class UI_GameOver : MonoBehaviour
+public class UIGameOver : MonoBehaviour
 {
     [SerializeField] private GameObject _panel;
 
@@ -12,12 +11,12 @@ public class UI_GameOver : MonoBehaviour
 
     private void OnEnable()
     {
-        FailZoneManager.OnGameOver += ShowPanel;
+        GameManager.OnGameOver += ShowPanel;
     }
 
     private void OnDisable()
     {
-        FailZoneManager.OnGameOver -= ShowPanel;
+        GameManager.OnGameOver -= ShowPanel;
     }
 
     private void ShowPanel()
@@ -27,7 +26,6 @@ public class UI_GameOver : MonoBehaviour
 
     public void Retry()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.RestartGame();
     }
 }

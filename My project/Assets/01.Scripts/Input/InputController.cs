@@ -8,12 +8,12 @@ public class InputController : MonoBehaviour
 
     private void OnEnable()
     {
-        FailZoneManager.OnGameOver += HandleGameOver;
+        GameManager.OnGameOver += HandleGameOver;
     }
 
     private void OnDisable()
     {
-        FailZoneManager.OnGameOver -= HandleGameOver;
+        GameManager.OnGameOver -= HandleGameOver;
     }
 
     private void Update()

@@ -1,15 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class IngredientMove : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _distance;
 
-
     private Rigidbody _rb;
     private bool _isDrop;
-    private bool _skipFailCheck;
-    private float _dropTime;
     private Vector3 _startPosition;
     private int _direction = 1;
 
@@ -33,13 +30,9 @@ public class IngredientMove : MonoBehaviour
 
     private void Update()
     {
-        if (!_isDrop)
-        {
-            Move();
-            return;
-        }
+        if (_isDrop) return;
 
-        CheckFail();
+        Move();
     }
 
     private void Move()
@@ -64,35 +57,6 @@ public class IngredientMove : MonoBehaviour
     public void Drop()
     {
         _isDrop = true;
-        _dropTime = Time.time;
         _rb.isKinematic = false;
-    }
-
-    private void CheckFail()
-    {
-        if (_skipFailCheck) return;
-        if (Time.time - _dropTime < FailZoneManager.Instance.CheckDelay) return;
-
-        if (transform.position.y < FailZoneManager.Instance.FailHeight)
-        {
-            FailZoneManager.Instance.TriggerGameOver();
-        }
-    }
-
-    public void SetSkipFailCheck()
-    {
-        _skipFailCheck = true;
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (!_isDrop) return;
-        if (_skipFailCheck) return;
-        if (Time.time - _dropTime < FailZoneManager.Instance.CheckDelay) return;
-
-        if (collision.gameObject.CompareTag(FailZoneManager.Instance.FloorTag))
-        {
-            FailZoneManager.Instance.TriggerGameOver();
-        }
     }
 }

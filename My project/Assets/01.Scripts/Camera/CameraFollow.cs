@@ -28,15 +28,22 @@ public class CameraFollow : MonoBehaviour
 
     private void OnEnable()
     {
-        FailZoneManager.OnGameOver += HandleGameOver;
+        GameManager.OnGameOver += HandleGameOver;
+        IngredientsSpawner.OnIngredientDropped += HandleIngredientDropped;
     }
 
     private void OnDisable()
     {
-        FailZoneManager.OnGameOver -= HandleGameOver;
+        GameManager.OnGameOver -= HandleGameOver;
+        IngredientsSpawner.OnIngredientDropped -= HandleIngredientDropped;
     }
 
-    public void RegisterIngredient(Rigidbody rb)
+    private void HandleIngredientDropped(DropEventArgs args)
+    {
+        RegisterIngredient(args.Rigidbody);
+    }
+
+    private void RegisterIngredient(Rigidbody rb)
     {
         _ingredients.Add(new TrackedRigidbody
         {

@@ -1,8 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+
+public class DropEventArgs
+{
+    public int Score { get; }
+    public Rigidbody Rigidbody { get; }
+
+    public DropEventArgs(int score, Rigidbody rigidbody)
+    {
+        Score = score;
+        Rigidbody = rigidbody;
+    }
+}
 
 public class IngredientsSpawner : MonoBehaviour
 {
+    public static event Action<DropEventArgs> OnIngredientDropped;
+
     [Header("재료 정보")]
     [SerializeField] private GameObject[] _ingredients;
     [SerializeField] private GameObject _firstBun;
@@ -17,12 +32,12 @@ public class IngredientsSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        FailZoneManager.OnGameOver += HandleGameOver;
+        GameManager.OnGameOver += HandleGameOver;
     }
 
     private void OnDisable()
     {
-        FailZoneManager.OnGameOver -= HandleGameOver;
+        GameManager.OnGameOver -= HandleGameOver;
     }
 
     private void Start()
@@ -34,10 +49,10 @@ public class IngredientsSpawner : MonoBehaviour
     {
         _currentIngredient = Instantiate(_firstBun, _spawnPoint.transform.position, Quaternion.identity);
 
-        var move = _currentIngredient.GetComponent<IngredientMove>();
-        if (move != null)
+        var failDetector = _currentIngredient.GetComponent<IngredientFailDetector>();
+        if (failDetector != null)
         {
-            move.SetSkipFailCheck();
+            failDetector.SetSkipCheck();
         }
 
         Drop();
@@ -55,13 +70,21 @@ public class IngredientsSpawner : MonoBehaviour
             move.Drop();
         }
 
+        var failDetector = _currentIngredient.GetComponent<IngredientFailDetector>();
+        if (failDetector != null)
+        {
+            failDetector.Activate();
+        }
+
+        int score = 0;
         var ingredient = _currentIngredient.GetComponent<Ingredient>();
         if (ingredient != null && ingredient.Data != null)
         {
-            ScoreManager.Instance.AddScore(ingredient.Data.Score);
+            score = ingredient.Data.Score;
         }
 
-        CameraFollow.Instance.RegisterIngredient(_currentIngredient.GetComponent<Rigidbody>());
+        var rb = _currentIngredient.GetComponent<Rigidbody>();
+        OnIngredientDropped?.Invoke(new DropEventArgs(score, rb));
 
         StartCoroutine(SpawnNextRoutine());
     }
@@ -75,7 +98,7 @@ public class IngredientsSpawner : MonoBehaviour
 
         if (_isGameOver) yield break;
 
-        GameObject prefab = _ingredients[Random.Range(0, _ingredients.Length)];
+        GameObject prefab = _ingredients[UnityEngine.Random.Range(0, _ingredients.Length)];
         _currentIngredient = Instantiate(prefab, _spawnPoint.position, Quaternion.identity);
 
         _isSpawning = false;

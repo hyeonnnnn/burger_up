@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -5514702957866443198}
   - component: {fileID: -4085637291703900109}
   - component: {fileID: -6984206151072521101}
+  - component: {fileID: -3235384774944986503}
   m_Layer: 0
   m_Name: Tomato_low
   m_TagString: Untagged
@@ -165,3 +166,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: ffde9d5f46cb3ce428988cbcf888c5f8, type: 2}
+--- !u!114 &-3235384774944986503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3276823636099120603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a481cd225d57d44e81c354a78b4fa1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
