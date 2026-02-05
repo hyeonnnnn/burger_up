@@ -13,6 +13,17 @@ public class IngredientsSpawner : MonoBehaviour
 
     private GameObject _currentIngredient;
     private bool _isSpawning = false;
+    private bool _isGameOver = false;
+
+    private void OnEnable()
+    {
+        FailZoneManager.OnGameOver += HandleGameOver;
+    }
+
+    private void OnDisable()
+    {
+        FailZoneManager.OnGameOver -= HandleGameOver;
+    }
 
     private void Start()
     {
@@ -29,12 +40,22 @@ public class IngredientsSpawner : MonoBehaviour
     {
         if (_currentIngredient == null) return;
         if (_isSpawning) return;
+        if (_isGameOver) return;
 
         var move = _currentIngredient.GetComponent<IngredientMove>();
         if (move != null)
         {
             move.Drop();
         }
+
+        var ingredient = _currentIngredient.GetComponent<Ingredient>();
+        if (ingredient != null && ingredient.Data != null)
+        {
+            ScoreManager.Instance.AddScore(ingredient.Data.Score);
+        }
+
+        FailZoneManager.Instance.RegisterIngredient(_currentIngredient.transform);
+        CameraFollow.Instance.RegisterIngredient(_currentIngredient.GetComponent<Rigidbody>());
 
         StartCoroutine(SpawnNextRoutine());
     }
@@ -46,9 +67,16 @@ public class IngredientsSpawner : MonoBehaviour
 
         yield return new WaitForSeconds(_spawnDelay);
 
+        if (_isGameOver) yield break;
+
         GameObject prefab = _ingredients[Random.Range(0, _ingredients.Length)];
         _currentIngredient = Instantiate(prefab, _spawnPoint.position, Quaternion.identity);
 
         _isSpawning = false;
+    }
+
+    private void HandleGameOver()
+    {
+        _isGameOver = true;
     }
 }

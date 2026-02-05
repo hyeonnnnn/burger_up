@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4066115423877881222}
   - component: {fileID: 6203659557752143620}
   - component: {fileID: -2760547313481827119}
+  - component: {fileID: 7856943402668934002}
   m_Layer: 0
   m_Name: Lettuce_low.001
   m_TagString: Untagged
@@ -151,3 +152,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _distance: 2
+--- !u!114 &7856943402668934002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937332790669959637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8b9c31392758948a99a17b12e8fae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 2f6bc8b5589f42e42aa47b05733f7f67, type: 2}
