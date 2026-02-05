@@ -33,6 +33,7 @@ public class FailZoneManager : MonoBehaviour
         if (_isGameOver) return;
 
         _isGameOver = true;
+        Time.timeScale = 0f;
         OnGameOver?.Invoke();
     }
 }

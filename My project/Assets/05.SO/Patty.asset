@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e00bc147a1e124db9f22ef702abedc, type: 3}
   m_Name: Patty
   m_EditorClassIdentifier: 
-  _ingredientName: Lettuce
-  _score: 10
+  _ingredientName: Patty
+  _score: 70
