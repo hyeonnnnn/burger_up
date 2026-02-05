@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FailZoneManager : MonoBehaviour
@@ -10,9 +9,13 @@ public class FailZoneManager : MonoBehaviour
 
     [SerializeField] private float _failHeight = -2f;
     [SerializeField] private float _checkDelay = 2f;
+    [SerializeField] private string _floorTag = "Floor";
 
-    private readonly List<TrackedIngredient> _trackedIngredients = new List<TrackedIngredient>();
     private bool _isGameOver;
+
+    public float FailHeight => _failHeight;
+    public float CheckDelay => _checkDelay;
+    public string FloorTag => _floorTag;
 
     private void Awake()
     {
@@ -25,45 +28,11 @@ public class FailZoneManager : MonoBehaviour
         Instance = this;
     }
 
-    public void RegisterIngredient(Transform ingredient)
-    {
-        _trackedIngredients.Add(new TrackedIngredient
-        {
-            Transform = ingredient,
-            RegisterTime = Time.time
-        });
-    }
-
-    private void Update()
+    public void TriggerGameOver()
     {
         if (_isGameOver) return;
 
-        float now = Time.time;
-
-        for (int i = _trackedIngredients.Count - 1; i >= 0; i--)
-        {
-            var tracked = _trackedIngredients[i];
-
-            if (tracked.Transform == null)
-            {
-                _trackedIngredients.RemoveAt(i);
-                continue;
-            }
-
-            if (now - tracked.RegisterTime < _checkDelay) continue;
-
-            if (tracked.Transform.position.y < _failHeight)
-            {
-                _isGameOver = true;
-                OnGameOver?.Invoke();
-                return;
-            }
-        }
-    }
-
-    private struct TrackedIngredient
-    {
-        public Transform Transform;
-        public float RegisterTime;
+        _isGameOver = true;
+        OnGameOver?.Invoke();
     }
 }

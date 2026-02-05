@@ -33,6 +33,13 @@ public class IngredientsSpawner : MonoBehaviour
     private void SpawnFirstObject()
     {
         _currentIngredient = Instantiate(_firstBun, _spawnPoint.transform.position, Quaternion.identity);
+
+        var move = _currentIngredient.GetComponent<IngredientMove>();
+        if (move != null)
+        {
+            move.SetSkipFailCheck();
+        }
+
         Drop();
     }
 
@@ -54,7 +61,6 @@ public class IngredientsSpawner : MonoBehaviour
             ScoreManager.Instance.AddScore(ingredient.Data.Score);
         }
 
-        FailZoneManager.Instance.RegisterIngredient(_currentIngredient.transform);
         CameraFollow.Instance.RegisterIngredient(_currentIngredient.GetComponent<Rigidbody>());
 
         StartCoroutine(SpawnNextRoutine());
