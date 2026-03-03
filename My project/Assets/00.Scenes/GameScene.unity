@@ -1847,6 +1847,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8163051394022118687, guid: 6bb1e55d945111b44bef0956433f54b3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8679558451398653338, guid: 6bb1e55d945111b44bef0956433f54b3, type: 3}
       propertyPath: m_Name
       value: UI_GameOver
